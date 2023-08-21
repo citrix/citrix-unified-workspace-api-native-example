@@ -1,0 +1,10 @@
+owner: conorg
+pipeline:
+  citool: ''
+  releaseBranch: ''
+  sonarqube: null
+productionUse: CustomerCurrent
+repoType: Other
+reporting:
+  product: Workspace
+  teamname: wsp-team-swan
