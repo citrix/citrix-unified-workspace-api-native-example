@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Start TMS",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-tms",
+            "program": "${workspaceFolder}/Citrix.UnifiedApi.Test.TMS/bin/Debug/net7.0/Citrix.UnifiedApi.Test.TMS.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Citrix.UnifiedApi.Test.TMS",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Start Native Client",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-native",
+            "program": "${workspaceFolder}/Citrix.UnifiedApi.Test.NativeClientWpf/bin/Debug/net7.0-windows/Citrix.UnifiedApi.Test.NativeClientWpf.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Citrix.UnifiedApi.Test.NativeClientWpf",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+        },
+    ]
+}
