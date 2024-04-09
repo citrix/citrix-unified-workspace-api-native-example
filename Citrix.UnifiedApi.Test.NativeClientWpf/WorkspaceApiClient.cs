@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -21,6 +22,12 @@ namespace Citrix.UnifiedApi.Test.NativeClientWpf
     {
         public HttpClientHandler WsClientHandler = new();
         public HttpClient WsClient = new();
+
+        public WorkspaceApiClient()
+        {
+            var applicationId = ConfigurationManager.AppSettings["ApplicationId"]!;
+            WsClient.DefaultRequestHeaders.Add("Citrix-ApplicationId", applicationId);
+        }
 
         public string CustomerDomain { get; set; } = "";
         public string ApiGatewayUrl { get; set; } = "";

@@ -33,6 +33,8 @@ You will need to configure the TMS Frontend settings in the `appsettings.Develop
 
 This is because the Application is configured to run on `https://localhost:3000`.
 
+Before running the Native example, you will need to set the Application ID in the [app.config](./Citrix.UnifiedApi.Test.NativeClientWpf/App.config) to be the application ID for the OAuth client you have created in the Citrix Cloud Admin Console.
+
 ## Actions covered in this example
 
 - Login / Logout
