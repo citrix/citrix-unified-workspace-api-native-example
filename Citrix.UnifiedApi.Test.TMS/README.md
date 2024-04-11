@@ -19,8 +19,10 @@ This is purely an example and shouldn't be used for real production services.
 
 To configure the Workspace OAuth Client settings including secrets use the dotnet user secrets feature. See https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows.
 
-Example:
 
+These settings will be related to OAuth clients created in the Citrix Cloud Admin Console - see [the documentation](https://developer-docs.citrix.com/en-us/workspace-platform/unified-workspace-api-preview/oauth-client-management) for details on how to create one.
+
+Example:
 ```json
 {
   "Client": {
@@ -33,11 +35,11 @@ Example:
 }
 ```
 
-- [Required] `ClientId`: The Public or Private client ID returned during client creation.
-- [Optional] `ClientSecret`: Only provide this for Private Clients, should have been returned during creation.
+- [Required] `ClientId`: The Client ID of the client. 
+- [Optional] `ClientSecret`: The Client Secret of the client, shown after creating a private client. This is only needed if a private client was created.
 - [Optional] `CallbackPath`: Set to `/callback` by default, this is used to formulate the 'redirect url' that is required to be set on the client, e.g. the host for this application is `https://localhost:7182` and therefore the allowed redirect URL set on the client must be `https://localhost:7182/callback`.
-- [Optional] `UsePkce`: Set to `true` by default, this must match what you set during client creation.
-- [Optional] `UseOfflineAccess`: Set to `true` by default, this must match what you set during client creation.
+- [Optional] `UsePkce`: Set to true by default, this must match what you set during client creation. You can check the value by clicking the "Edit" dropdown item for the client you want to use
+- [Optional] `UseOfflineAccess`: Set to true by default, this must match what you set during client creation. You can check the value by clicking the "Edit" dropdown item for the client you want to use
 
 #### Frontend Settings
 
