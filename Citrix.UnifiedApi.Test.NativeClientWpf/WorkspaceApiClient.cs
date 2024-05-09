@@ -20,17 +20,25 @@ namespace Citrix.UnifiedApi.Test.NativeClientWpf
 {
     public class WorkspaceApiClient
     {
-        public HttpClientHandler WsClientHandler = new();
-        public HttpClient WsClient = new();
+        private HttpClient WsClient = new();
 
         public WorkspaceApiClient()
         {
-            var applicationId = ConfigurationManager.AppSettings["ApplicationId"]!;
-            WsClient.DefaultRequestHeaders.Add("Citrix-ApplicationId", applicationId);
+            SetAppIdHeader();
+        }
+
+        public void ResetWsClient()
+        {
+            WsClient = new HttpClient(new HttpClientHandler());
+            SetAppIdHeader();
+        }
+
+        public void ClearAuthorizationHeader()
+        {
+            WsClient.DefaultRequestHeaders.Authorization = null;
         }
 
         public string CustomerDomain { get; set; } = "";
-        public string ApiGatewayUrl { get; set; } = "";
 
         public async Task<DiscoveryResponse> Discovery()
         {
@@ -41,7 +49,7 @@ namespace Citrix.UnifiedApi.Test.NativeClientWpf
             }
             var discovery = await response.Content.ReadFromJsonAsync<DiscoveryResponse>();
             return discovery;
-        } 
+        }
 
         public async Task<List<Resource>> PerformEnumeration(string resourcesUrl)
         {
@@ -74,6 +82,15 @@ namespace Citrix.UnifiedApi.Test.NativeClientWpf
         {
             var token = await Application.Current.Windows.OfType<AuthWindow>().SingleOrDefault().GetAccessToken();
             WsClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        }
+
+        private void SetAppIdHeader()
+        {
+            if (!WsClient.DefaultRequestHeaders.Contains("Citrix-ApplicationId"))
+            {
+                var applicationId = ConfigurationManager.AppSettings["ApplicationId"]!;
+                WsClient.DefaultRequestHeaders.Add("Citrix-ApplicationId", applicationId);
+            }
         }
     }
 }

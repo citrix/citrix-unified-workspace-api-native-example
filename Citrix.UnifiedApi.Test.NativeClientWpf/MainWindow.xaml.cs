@@ -8,12 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Resources;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 
 namespace Citrix.UnifiedApi.Test.NativeClientWpf
 {
@@ -31,7 +27,6 @@ namespace Citrix.UnifiedApi.Test.NativeClientWpf
         {
             InitializeComponent();
             _workspaceApiClient = new WorkspaceApiClient();
-            _workspaceApiClient.WsClientHandler = new HttpClientHandler();
 
             ResourcesList.ItemsSource = Enumeration;
             this.DataContext = this;
@@ -58,7 +53,7 @@ namespace Citrix.UnifiedApi.Test.NativeClientWpf
             if (_authWindow != null)
             {
                 await _authWindow.LogOut();
-                _workspaceApiClient.WsClient.DefaultRequestHeaders.Authorization = null;
+                _workspaceApiClient.ClearAuthorizationHeader();
                 LabelStatus.Content = "Unauthenticated";
             }
         }
@@ -81,11 +76,11 @@ namespace Citrix.UnifiedApi.Test.NativeClientWpf
                 return;
             }
             Enumeration = new ObservableCollection<Resource>(resources);
-            
+
             // Force refreshing the list in the UI
             ResourcesList.ItemsSource = null;
             ResourcesList.ItemsSource = Enumeration;
-            
+
             this.DataContext = this;
             LabelStatus.Content = "Enumerated";
         }
@@ -111,7 +106,7 @@ namespace Citrix.UnifiedApi.Test.NativeClientWpf
 
         private async void AuthWindow_Authenticated(object sender)
         {
-            _workspaceApiClient.WsClient = new HttpClient(_workspaceApiClient.WsClientHandler);
+            _workspaceApiClient.ResetWsClient();
             LabelStatus.Content = "Authenticated";
 
             try

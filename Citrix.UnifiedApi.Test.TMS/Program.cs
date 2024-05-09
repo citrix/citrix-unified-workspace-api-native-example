@@ -73,7 +73,11 @@ builder.Services.AddOpenIdConnectAccessTokenManagement(options =>
 });
 
 services.AddDistributedMemoryCache();
-services.AddHttpClient(nameof(DiscoveryClient));
+services.AddHttpClient(nameof(DiscoveryClient), configureClient: client =>
+{
+    client.DefaultRequestHeaders.UserAgent.ParseAdd("Citrix TMS Example - API HttpClient");
+    client.DefaultRequestHeaders.Add("Citrix-ApplicationId", oidcSettings.ApplicationId);
+});
 services.AddMemoryCache();
 services.AddSingleton<DiscoveryClient>();
 
