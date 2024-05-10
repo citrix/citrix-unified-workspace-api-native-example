@@ -28,6 +28,7 @@ Example:
   "Client": {
     "ClientId": "clientId==",
     "ClientSecret": null,
+    "ApplicationId": null,
     "CallbackPath": "/callback",
     "UsePkce": true,
     "UseOfflineAccess": true
@@ -36,6 +37,7 @@ Example:
 ```
 
 - [Required] `ClientId`: The Client ID of the client. 
+- [Required] `ApplicationId`: The Application ID of the client.
 - [Optional] `ClientSecret`: The Client Secret of the client, shown after creating a private client. This is only needed if a private client was created.
 - [Optional] `CallbackPath`: Set to `/callback` by default, this is used to formulate the 'redirect url' that is required to be set on the client, e.g. the host for this application is `https://localhost:7182` and therefore the allowed redirect URL set on the client must be `https://localhost:7182/callback`.
 - [Optional] `UsePkce`: Set to true by default, this must match what you set during client creation. You can check the value by clicking the "Edit" dropdown item for the client you want to use
