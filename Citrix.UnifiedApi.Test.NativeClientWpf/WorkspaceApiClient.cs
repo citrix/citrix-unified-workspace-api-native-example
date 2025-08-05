@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright © 2023. Cloud Software Group, Inc.
+* Copyright © 2025. Cloud Software Group, Inc.
 * This file is subject to the license terms contained
 * in the license file that is distributed with this file.
 */
@@ -42,7 +42,7 @@ namespace Citrix.UnifiedApi.Test.NativeClientWpf
 
         public async Task<DiscoveryResponse> Discovery()
         {
-            var response = await WsClient.GetAsync($"https://{CustomerDomain}/api/discovery/configurations");
+            var response = await WsClient.GetAsync($"https://{CustomerDomain}/citrixapi/discovery/configurations");
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception($"Discovery Failure - got status {response.StatusCode} from API Gateway");
