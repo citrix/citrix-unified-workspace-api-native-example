@@ -93,7 +93,7 @@ namespace Citrix.UnifiedApi.Test.NativeClientWpf
             try
             {
                 var token = await _authWindow.GetAccessToken();
-                await _workspaceApiClient.PerformLaunch(resource.Links.LaunchUrl);
+                await _workspaceApiClient.PerformLaunch(resource.Links.IcaFileUrl);
             }
             catch (Exception ex)
             {

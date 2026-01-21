@@ -19,8 +19,8 @@ namespace Citrix.UnifiedApi.Test.NativeClientWpf
 
     public class Links
     {
-        [JsonPropertyName("launchUrl")]
-        public string LaunchUrl { get; set; }
+        [JsonPropertyName("icaFileUrl")]
+        public string IcaFileUrl { get; set; }
 
         [JsonPropertyName("imageUrl")]
         public string ImageUrl { get; set; }

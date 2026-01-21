@@ -9,7 +9,7 @@ This is purely an example and shouldn't be used for real production services.
 ## Prerequisites
 
 - You have either a Private or Public Workspace OAuth Client
-- You will be running the example code in Visual Studio and can run [.NET 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+- You will be running the example code in Visual Studio and can run [.NET 10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 
 ## Getting Started
 
@@ -77,4 +77,4 @@ This example is a backend, and therefore runs in the background awaiting client 
 
 ## License
 
-Copyright © 2025. Cloud Software Group, Inc. All Rights Reserved.
+Copyright © 2026. Cloud Software Group, Inc. All Rights Reserved.
